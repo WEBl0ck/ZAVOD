@@ -15,7 +15,7 @@ class MainScene extends Phaser.Scene {
   clickCountText: any | Text = {};
   clickCount = 0;
   create() {
-    this.add.image(400, 300, 'sky');
+    this.add.image(400, 400, 'sky');
 
     this.clickCountText = this.add.text(100, 200, '');
 
