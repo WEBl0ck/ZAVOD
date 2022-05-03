@@ -22,7 +22,13 @@ function MainCanvas() {
     initPhaser();
   }, []);
 
-  return <div className="main" id="main"></div>;
+  return (
+    <div
+      className="main"
+      id="main"
+      style={{ height: '100vh', width: '100%', overflow: 'hidden', cursor: 'move' }}
+    ></div>
+  );
 }
 
 export default MainCanvas;

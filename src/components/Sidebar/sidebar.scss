@@ -2,4 +2,13 @@
   width: 300px;
   height: 100vh;
   background-color: #1d1d1d;
+  position: fixed;
+
+  &-left {
+    left: 0;
+  }
+
+  &-right {
+    right: 0;
+  }
 }

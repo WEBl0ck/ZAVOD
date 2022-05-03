@@ -5,9 +5,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Sidebar />
+      <Sidebar position="left" />
       <MainCanvas />
-      <Sidebar />
+      <Sidebar position="right" />
     </div>
   );
 }
