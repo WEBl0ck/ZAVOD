@@ -1,7 +1,4 @@
 import Phaser from 'phaser';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { selectValue, increment, decrement } from '../store/slices/testSlice';
 
 class MainScene extends Phaser.Scene {
   constructor() {
@@ -10,30 +7,48 @@ class MainScene extends Phaser.Scene {
 
   preload() {
     this.load.image('sky', '/assets/images/sky.png');
+
+    this.load.spritesheet('sprWater', '/assets/tiles/sprWater.png', {
+      frameWidth: 16,
+      frameHeight: 16,
+    });
+    this.load.image('sprSand', '/assets/tiles/sprSand.png');
+    this.load.image('sprGrass', '/assets/tiles/sprGrass.png');
   }
 
-  clickCountText: any | Text = {};
-  clickCount = 0;
   create() {
+    // BULLSHIT ZONE
     this.add.image(400, 400, 'sky');
+    // CAMERA ZONE
 
-    this.clickCountText = this.add.text(100, 200, '');
+    this.cameras.main.setBounds(0, 0, 1920, 1080);
+    this.cameras.main.setViewport(500, 0, 900, 700);
 
-    const helloButton = this.add.text(100, 100, 'Hello Phaser!', { color: '#0f0' });
-    const resetButton = this.add.text(300, 100, 'Reset Phaser!', { color: '#0f0' });
-    helloButton.setInteractive();
-    resetButton.setInteractive();
+    this.cameras.main.setZoom(1);
+    this.cameras.main.centerOn(0, 0);
 
-    helloButton.on('pointerdown', () => this.updateClickCountText(this.clickCount + 1));
-    resetButton.on('pointerdown', () => this.updateClickCountText(0));
+    this.input.on('pointermove', (p: any) => {
+      if (!p.isDown) return;
 
-    this.updateClickCountText(0);
-  }
+      this.cameras.main.scrollX -= (p.x - p.prevPosition.x) / this.cameras.main.zoom;
+      this.cameras.main.scrollY -= (p.y - p.prevPosition.y) / this.cameras.main.zoom;
+    });
 
-  updateClickCountText(count: number) {
-    this.clickCount = count;
-    this.clickCountText.setText(`Button has been clicked ${this.clickCount} times.`);
+    this.input.on('wheel', ({ deltaX, deltaY }: any) => {
+      if (deltaY > 0) {
+        var newZoom = this.cameras.main.zoom - 0.1;
+        if (newZoom > 0.3) {
+          this.cameras.main.setZoom(newZoom);
+        }
+      }
+
+      if (deltaY < 0) {
+        var newZoom = this.cameras.main.zoom + 0.1;
+        if (newZoom < 1.3) {
+          this.cameras.main.setZoom(newZoom);
+        }
+      }
+    });
   }
 }
-
 export default MainScene;
