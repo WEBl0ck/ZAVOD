@@ -1,11 +1,26 @@
-class Chunk {
-  scene = null;
-  tiles = null;
-  isLoaded = false;
-  x = 0;
-  y = 0;
+import Phaser from 'phaser';
 
-  constructor(scene: any, x: number, y: number) {
+import { IMainScene } from '../../scenes/MainScene';
+
+import Tile from '../Tile/Tile';
+
+export interface IChunk {
+  x: number;
+  y: number;
+
+  load: () => void;
+  unload: () => void;
+}
+class Chunk implements IChunk {
+  private scene;
+  private tiles: Phaser.GameObjects.Group;
+
+  private isLoaded;
+
+  readonly x;
+  readonly y;
+
+  constructor(scene: IMainScene, x: number, y: number) {
     this.scene = scene;
     this.x = x;
     this.y = y;
@@ -13,7 +28,7 @@ class Chunk {
     this.isLoaded = false;
   }
 
-  unload() {
+  public unload() {
     if (this.isLoaded) {
       this.tiles.clear(true, true);
 
@@ -21,25 +36,25 @@ class Chunk {
     }
   }
 
-  load() {
+  public load() {
     if (!this.isLoaded) {
       for (var x = 0; x < this.scene.chunkSize; x++) {
         for (var y = 0; y < this.scene.chunkSize; y++) {
           var tileX = this.x * (this.scene.chunkSize * this.scene.tileSize) + x * this.scene.tileSize;
           var tileY = this.y * (this.scene.chunkSize * this.scene.tileSize) + y * this.scene.tileSize;
 
-          var perlinValue = noise.perlin2(tileX / 100, tileY / 100);
-
           var key = '';
           var animationKey = '';
 
-          if (perlinValue < 0.2) {
+          if (x % 2 === y % 2) {
+            key = 'sprWhiteTile';
+          } else {
+            key = 'sprBlackTile';
+          }
+
+          if (x == 8 && y == 8) {
             key = 'sprWater';
             animationKey = 'sprWater';
-          } else if (perlinValue >= 0.2 && perlinValue < 0.3) {
-            key = 'sprSand';
-          } else if (perlinValue >= 0.3) {
-            key = 'sprGrass';
           }
 
           var tile = new Tile(this.scene, tileX, tileY, key);
