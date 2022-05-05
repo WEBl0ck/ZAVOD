@@ -1,4 +1,18 @@
+@font-face {
+  font-family: 'Karmatic Arcade';
+  src: url('/public/fonts/ka1.ttf');
+}
+
 .App {
   display: flex;
   justify-content: space-between;
+}
+
+body {
+  font-family: 'Karmatic Arcade' !important;
+  font-size: 16px;
+}
+
+button {
+  font-family: 'Karmatic Arcade' !important;
 }
