@@ -4,7 +4,9 @@ import MainScene from '../../scenes/MainScene';
 
 import { config } from '../../configs/phaser.config';
 
-import './MainCanvas.scss';
+import PixelCoinIcon from '../../../public/assets/images/pixel-coin.png';
+
+import './mainCanvas.scss';
 
 function MainCanvas() {
   useEffect(() => {
@@ -23,11 +25,13 @@ function MainCanvas() {
   }, []);
 
   return (
-    <div
-      className="main"
-      id="main"
-      style={{ height: '100vh', width: '100%', overflow: 'hidden', cursor: 'move' }}
-    ></div>
+    <>
+      <div className="main" id="main" />
+      <div className="total-money">
+        <span>5.000.000.000</span>
+        <img src={PixelCoinIcon} alt="pixel coin icon" />
+      </div>
+    </>
   );
 }
 
