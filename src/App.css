@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Karmatic Arcade';
-  src: url('/public/fonts/ka1.ttf');
+  src: url('/fonts/ka1.ttf');
 }
 
 .App {
@@ -15,4 +15,8 @@ body {
 
 button {
   font-family: 'Karmatic Arcade' !important;
+}
+
+button:focus {
+  border: none;
 }
