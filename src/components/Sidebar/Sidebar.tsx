@@ -1,13 +1,24 @@
-import React from 'react';
+import React from 'react'
 
-import './sidebar.scss';
+import { Tabs } from '.././exports'
+
+import { TabName } from '../Tabs/tabs.constants'
+
+import './sidebar.scss'
 
 interface SidebarProps {
-  position: 'left' | 'right';
+  position: 'left' | 'right'
 }
 
 function Sidebar({ position }: SidebarProps) {
-  return <div className={`sidebar ${position == 'left' ? 'sidebar-left' : 'sidebar-right'}`}></div>;
+  const leftSidebarTabs: TabName[] = ['CRAFT', 'STORAGE', 'STATS']
+  const rightSidebarTabs: TabName[] = ['SHOP', 'UPGRADE', 'BUFFS']
+
+  return (
+    <div className={`sidebar ${position == 'left' ? 'sidebar-left' : 'sidebar-right'}`}>
+      {position === 'left' ? <Tabs tabsList={leftSidebarTabs} /> : <Tabs tabsList={rightSidebarTabs} />}
+    </div>
+  )
 }
 
-export default Sidebar;
+export default Sidebar
