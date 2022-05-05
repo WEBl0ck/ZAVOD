@@ -19,6 +19,8 @@ class MainScene extends Phaser.Scene implements IMainScene {
 
   private player: Phaser.Physics.Arcade.Sprite | any = null;
 
+  private minimap: any = null;
+
   constructor() {
     super('MainScene');
   }
@@ -54,6 +56,14 @@ class MainScene extends Phaser.Scene implements IMainScene {
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
+    this.input.on('pointerdown', () => {
+      console.log(this.chunks);
+
+      const chunk = this.getChunk(3, 2);
+
+      console.log(chunk, '<< chunk');
+    });
+
     // CAMERA ZONE
     // this.cameras.main.setBounds(0, 0, 1920, 1080);
     // this.cameras.main.setViewport(500, 0, 900, 700);
@@ -74,6 +84,13 @@ class MainScene extends Phaser.Scene implements IMainScene {
         }
       }
     });
+
+    const { width } = this.scale;
+    this.minimap = this.cameras
+      .add(width - 600, 0, 250, 300)
+      .setZoom(0.2)
+      .setName('mini');
+    this.minimap.setBackgroundColor(0x002244);
   }
 
   getChunk(x: number, y: number) {
@@ -132,7 +149,8 @@ class MainScene extends Phaser.Scene implements IMainScene {
       this.player.setVelocity(0, 0);
     }
 
-    this.cameras.main.startFollow(this.player, false, 0.1, 0.1, 0.1, 0.1);
+    this.cameras.main.startFollow(this.player, false, 0.01, 0.01);
+    this.minimap.startFollow(this.player, false, 0.01, 0.01);
   }
 }
 export default MainScene;
