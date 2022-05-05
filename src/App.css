@@ -16,7 +16,3 @@ body {
 button {
   font-family: 'Karmatic Arcade' !important;
 }
-
-button:focus {
-  border: none;
-}
