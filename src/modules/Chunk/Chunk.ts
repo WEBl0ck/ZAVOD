@@ -8,12 +8,14 @@ export interface IChunk {
   x: number;
   y: number;
 
+  tiles: Phaser.GameObjects.Group;
+
   load: () => void;
   unload: () => void;
 }
 class Chunk implements IChunk {
   private scene;
-  private tiles: Phaser.GameObjects.Group;
+  readonly tiles;
 
   private isLoaded;
 
