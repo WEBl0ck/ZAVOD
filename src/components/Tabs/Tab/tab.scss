@@ -1,0 +1,28 @@
+.tab-container {
+  height: 100%;
+}
+
+.craft-tab {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__button-container {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__button {
+    background-color: #3c3c3c;
+    border: none;
+    border-radius: 2px;
+    height: 250px;
+    width: 250px;
+    cursor: pointer;
+    font-size: 45px;
+  }
+}

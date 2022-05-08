@@ -15,10 +15,11 @@ function Tabs({ tabsList }: TabsProps) {
   return (
     <div className="tabs-container">
       <div className="tabs-buttons">
-        {tabsList.map((tab) => (
+        {tabsList.map((tab, index) => (
           <button
             className={`${tab === activeTab ? 'active-tab-button' : 'default-tab-button'}`}
-            onClick={() => setActiveTab(tab)}>
+            onClick={() => setActiveTab(tab)}
+            key={tab}>
             {tab}
           </button>
         ))}
