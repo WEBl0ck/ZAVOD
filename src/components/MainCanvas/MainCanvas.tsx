@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { connect } from 'react-redux'
 
 import MainScene from '../../scenes/MainScene'
 
@@ -8,7 +9,7 @@ import PixelCoinIcon from '/assets/images/pixel-coin.png'
 
 import './mainCanvas.scss'
 
-function MainCanvas() {
+function MainCanvas({ counter }: any) {
   useEffect(() => {
     async function initPhaser() {
       // Need to initialize Phaser here otherwise Gatsby will try to SSR it
@@ -28,11 +29,15 @@ function MainCanvas() {
     <>
       <div className="main" id="main" />
       <div className="total-money">
-        <span>5.000.000.000</span>
+        <span>{counter}</span>
         <img src={PixelCoinIcon} alt="pixel coin icon" />
       </div>
     </>
   )
 }
 
-export default MainCanvas
+function countStateToProps(state: any) {
+  return { counter: state.counter.value }
+}
+
+export default connect(countStateToProps)(MainCanvas)
