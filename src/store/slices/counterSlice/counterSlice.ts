@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+// This slice contain all our money
 export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
@@ -15,9 +16,12 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload
     },
+    decrementByAmount: (state, action) => {
+      state.value -= action.payload
+    },
   },
 })
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { increment, decrement, incrementByAmount, decrementByAmount } = counterSlice.actions
 
 export default counterSlice.reducer

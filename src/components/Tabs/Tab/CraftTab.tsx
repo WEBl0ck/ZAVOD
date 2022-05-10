@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { store } from '../../../store/store'
-import { increment } from '../../../store/slices/counterSlice'
+import { increment } from '../../../store/slices/counterSlice/counterSlice'
 
 import './tab.scss'
 
