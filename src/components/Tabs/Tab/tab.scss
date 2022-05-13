@@ -25,4 +25,11 @@
     cursor: pointer;
     font-size: 45px;
   }
+
+  &__item-list {
+    height: 400px;
+    background-color: #3c3c3c;
+    border-top-right-radius: 9px;
+    border-top-left-radius: 9px;
+  }
 }
