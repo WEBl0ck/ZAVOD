@@ -1,0 +1,17 @@
+@use '../../../theme.scss';
+
+.item {
+  background-color: theme.$GREY_3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 15px;
+  cursor: pointer;
+
+  &-name {
+    color: theme.$WHITE_1;
+    letter-spacing: 5px;
+  }
+}

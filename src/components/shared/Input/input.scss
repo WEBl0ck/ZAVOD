@@ -1,0 +1,21 @@
+@use '../../../theme.scss';
+
+.input {
+  background-color: theme.$GREY_3;
+  border: none;
+  border-radius: 5px;
+  height: 35px;
+  font-size: 15px;
+  font-family: Karmatic Arcade;
+  letter-spacing: 4.5px;
+  width: 100%;
+  color: theme.$WHITE_1;
+
+  &::placeholder {
+    padding-left: 15px;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}

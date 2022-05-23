@@ -1,0 +1,46 @@
+@use '../../../theme.scss';
+
+.shop-item {
+  background-color: theme.$GREY_1;
+  width: 330px;
+  height: 100px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__image {
+    background-color: theme.$GREY_3;
+    height: 100px;
+    width: 100px;
+    min-width: 100px;
+    margin-right: 15px;
+    border-radius: 4px;
+  }
+
+  &__details-name {
+    z-index: 5;
+    color: theme.$WHITE_1;
+  }
+
+  &__details-price {
+    color: theme.$YELLOW;
+    z-index: 5;
+  }
+
+  &__count {
+    color: theme.$GREY_3;
+    font-size: 40px;
+    position: absolute;
+    right: 15px;
+    z-index: 0;
+  }
+}
