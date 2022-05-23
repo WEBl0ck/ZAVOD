@@ -1,11 +1,20 @@
 import React from 'react'
 
-import { BuffsTab, CraftTab, ShopTab, StatsTab, StorageTab, UpgradeTab } from '../../exports'
+import {
+  BuffsTab,
+  CraftTab,
+  ShopTab,
+  StatsTab,
+  StorageTab,
+  UpgradeTab,
+  BlueprintsBuyTab,
+  ResourcesBuyTab,
+} from '../../exports'
 
-import { TAB, TabName } from '../tabs.constants'
+import { TAB, TabType } from '../tabs.constants'
 
 interface TabProps {
-  name: TabName
+  name: TabType
 }
 
 function Tab({ name }: TabProps) {
@@ -22,6 +31,10 @@ function Tab({ name }: TabProps) {
       return <UpgradeTab />
     case TAB.BUFFS:
       return <BuffsTab />
+    case TAB.BLUEPRINGS:
+      return <BlueprintsBuyTab />
+    case TAB.RESOURCES:
+      return <ResourcesBuyTab />
 
     default:
       return <div></div>
