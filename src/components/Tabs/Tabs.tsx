@@ -1,23 +1,24 @@
 import { useState } from 'react'
 
 import Tab from './Tab/Tab'
-import { TabName } from './tabs.constants'
+import { TabType, ActiveTabColorType } from './tabs.constants'
 
 import './tabs.scss'
 
 interface TabsProps {
-  tabsList: TabName[]
+  tabsList: TabType[]
+  activeTabColor?: ActiveTabColorType
 }
 
-function Tabs({ tabsList }: TabsProps) {
-  const [activeTab, setActiveTab] = useState<TabName>(tabsList[0])
+function Tabs({ tabsList, activeTabColor = 'YELLOW' }: TabsProps) {
+  const [activeTab, setActiveTab] = useState<TabType>(tabsList[0])
 
   return (
     <div className="tabs-container">
       <div className="tabs-buttons">
         {tabsList.map((tab, index) => (
           <button
-            className={`${tab === activeTab ? 'active-tab-button' : 'default-tab-button'}`}
+            className={`${tab === activeTab ? `active-tab-button-${activeTabColor}` : 'default-tab-button'}`}
             onClick={() => setActiveTab(tab)}
             key={tab}>
             {tab}
