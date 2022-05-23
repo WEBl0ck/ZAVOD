@@ -69,7 +69,7 @@ class MainScene extends Phaser.Scene implements IMainScene {
     })
 
     store.subscribe(() => {
-      this.counter = store.getState().counter.value
+      this.counter = store.getState().main.value
     })
 
     // CAMERA ZONE

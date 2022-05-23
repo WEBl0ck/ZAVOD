@@ -37,7 +37,7 @@ function MainCanvas({ counter }: any) {
 }
 
 function countStateToProps(state: any) {
-  return { counter: state.counter.value }
+  return { counter: state.main.value }
 }
 
 export default connect(countStateToProps)(MainCanvas)
