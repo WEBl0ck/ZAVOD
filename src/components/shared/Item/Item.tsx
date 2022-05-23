@@ -1,7 +1,18 @@
 import React from 'react'
 
-function Item() {
-  return <div>Item</div>
+import './item.scss'
+
+interface ItemProps {
+  name: string
+  onClick?: () => void
+}
+
+function Item({ name, onClick }: ItemProps) {
+  return (
+    <div className="item" onClick={onClick}>
+      <p className="item-name">{name}</p>
+    </div>
+  )
 }
 
 export default Item
