@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { initialState } from './initialState'
+import { RootState } from '../../store'
+
+import initialState from './initialState'
 
 // This slice contain all our money
 export const resourcesSlice = createSlice({
@@ -8,6 +10,8 @@ export const resourcesSlice = createSlice({
   initialState,
   reducers: {},
 })
+
+export const selectResources = (state: RootState) => state['resources'].list
 
 export const {} = resourcesSlice.actions
 
