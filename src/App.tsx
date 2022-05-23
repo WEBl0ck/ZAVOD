@@ -1,6 +1,7 @@
-import { MainCanvas, Sidebar } from './components/exports';
+import { Toaster } from 'react-hot-toast'
+import { MainCanvas, Sidebar } from './components/exports'
 
-import './App.css';
+import './App.css'
 
 function App() {
   return (
@@ -8,8 +9,9 @@ function App() {
       <Sidebar position="left" />
       <MainCanvas />
       <Sidebar position="right" />
+      <Toaster position="bottom-center" />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
